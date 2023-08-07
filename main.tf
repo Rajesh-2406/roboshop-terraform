@@ -1,6 +1,6 @@
-module  "intances"{
-  for_each  = var.components
-  source  = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
-  component = each.key
-  env = var.env
+module  "instances" {
+  for_each = "components"
+  source  = git::https://github.com/Rajesh-2406/terraform-module-application.git
+  name  = each.key
+
 }
