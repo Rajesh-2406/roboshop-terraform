@@ -5,5 +5,5 @@ module "vpc" {
   web_subnet_cidr_block = each.value["web_subnet_cidr_block"]
 
   env = var.env
-  tags = var .tags
+  tags = var.tags
 }
