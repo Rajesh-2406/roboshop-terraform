@@ -10,3 +10,16 @@ module "vpc" {
   tags                  = var.tags
   default_vpc_id        = var.default_vpc_id
 }
+
+/*
+module "app_server" {
+  source = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
+
+  env = var.env
+  tags = var.tags
+  component = "test"
+  subnet_id =
+*/
+output "subnet_ids" {
+  value = module.vpc
+}
