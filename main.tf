@@ -1,10 +1,9 @@
 module "vpc" {
-  source     = "git::https://github.com/Rajesh-2406/tf-module-vpc.git"
+  source = "git::https://github.com/Rajesh-2406/tf-module-vpc.git"
 
-  for_each   = var.vpc
-  cidr_block = each.value["cidr_block"]
+  for_each              = var.vpc
+  cidr_block            = each.value["cidr_block"]
   web_subnet_cidr_block = each.value["web_subnet_cidr_block"]
-
-  env = var.env
-  tags = var.tags
+  env                   = var.env
+  tags                  = var.tags
 }
