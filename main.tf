@@ -1,7 +1,10 @@
-module  "instance" {
-  for_each = var.components
-  source  = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
-  component  = each.key
+module "vpc" {
+  source = "git::https://github.com/Rajesh-2406/tf-module-vpc.git"
+
+  for_each = var.vpc
+  cidr_block = each.value["cidr_block"]
+  web_subnet_cidr_block = each.value["web_subnet_cidr_block"]
+
   env = var.env
-  tags = merge(each.value["tags"], var.tags)
+  tags = var.tags
 }

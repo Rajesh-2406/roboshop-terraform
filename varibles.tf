@@ -1,3 +1,3 @@
 variable env {}
-variable components {}
+variable vpc {}
 variable tags {}
