@@ -1,3 +1,4 @@
+
 module "vpc" {
   source = "git::https://github.com/Rajesh-2406/tf-module-vpc.git"
 
@@ -7,5 +8,5 @@ module "vpc" {
 
   env                   = var.env
   tags                  = var.tags
-  default_vpc_id = var.default_vpc_id
+  default_vpc_id        = var.default_vpc_id
 }
