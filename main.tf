@@ -22,6 +22,3 @@ module "app_server" {
   vpc_id = lookup(lookup(module.vpc, "main",null), "vpc_id",null)
 }
 
-output "subnet_ids" {
-  value = module.vpc
-}
