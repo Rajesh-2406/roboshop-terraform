@@ -49,4 +49,4 @@ vpc = {
     }
 }
 
-default_vpc_id = "vpc-099e99d5add0bd1d5"
+default_vpc_id = "vpc-0bfb2d3938d8658ac"
