@@ -51,7 +51,7 @@ vpc = {
 
 default_vpc_id = "vpc-0bfb2d3938d8658ac"
 
-allow_ssh_cidr = "172.31.92.189/32"
+allow_ssh_cidr = [ "172.31.92.189/32" ]
 rabbitmq = {
     main = {
         instance_type = "t3.small"
