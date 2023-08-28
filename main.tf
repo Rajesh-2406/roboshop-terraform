@@ -12,7 +12,7 @@ module "vpc" {
 }
 
 
-m/*odule "app_server" {
+/*odule "app_server" {
   source = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
 
   env       = var.env
