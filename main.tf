@@ -49,8 +49,8 @@ module "rds"{
   component = each.value[component]
   engine = each.value["engine"]
   engine_version =["engine_version"]
-  db_name = each.value["db_name"]
-  subnet_id = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)[0]
+  database_name = each.value["database_name"]
+  subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)[0]
   instance_count = each.value["instance_count"]
   instance_class = each.value["instance_class"]
   vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
