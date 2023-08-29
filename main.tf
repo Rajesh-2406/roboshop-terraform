@@ -4,7 +4,7 @@ module "vpc" {
 
   for_each              = var.vpc
   cidr_block            = each.value["cidr_block"]
-  subnets = each.value["subnets"]
+  subnets               = each.value["subnets"]
 
   env                   = var.env
   tags                  = var.tags
@@ -20,7 +20,7 @@ module "app_server" {
   tags      = var.tags
   component = "test"
   subnet_id = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "app", null), "subnet_ids", null)[0]
-  vpc_id = lookup(lookup(module.vpc, "main",null ),"vpc_id",null)
+  vpc_id    = lookup(lookup(module.vpc, "main",null ),"vpc_id",null)
 }
 
 module "rabbitmq" {
@@ -34,30 +34,30 @@ module "rabbitmq" {
   vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   subnet_id      = lookup(lookup(lookup(lookup(module.vpc, "main", null ), "subnet_ids", null), "db", null), "subnet_ids", null)[0]
 
-  env  = var.env
-  tags = var.tags
+  env            = var.env
+  tags           = var.tags
   allow_ssh_cidr = var.allow_ssh_cidr
-  zone_id = var.zone_id
-  kms_key_id = var.kms_key_id
+  zone_id        = var.zone_id
+  kms_key_id     = var.kms_key_id
 }
 
 
 module "rds"{
   source = "git::https://github.com/Rajesh-2406/tf-module-rds.git"
 
-  for_each = var.rds
-  component = each.value["component"]
-  engine = each.value["engine"]
+  for_each       = var.rds
+  component      = each.value["component"]
+  engine         = each.value["engine"]
   engine_version =each.value["engine_version"]
-  database_name = each.value["database_name"]
-  subnet_id = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
+  database_name  = each.value["database_name"]
+  subnet_id      = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
   instance_count = each.value["instance_count"]
   instance_class = each.value["instance_class"]
-  vpc_id = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
 
-  tags = var.tags
-  env = var.env
-  kms_key_arn = var.kms_key_arn
+  tags           = var.tags
+  env            = var.env
+  kms_key_arn    = var.kms_key_arn
   sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
 
 }
