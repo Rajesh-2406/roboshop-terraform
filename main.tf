@@ -46,7 +46,7 @@ module "rds"{
   source = "git::https://github.com/Rajesh-2406/tf-module-rds.git"
 
   for_each = var.rds
-  component = each.value[component]
+  component = each.value["component"]
   engine = each.value["engine"]
   engine_version =["engine_version"]
   database_name = each.value["database_name"]
