@@ -41,7 +41,7 @@ module "rabbitmq" {
   kms_key_id = var.kms_key_id
 }
 
-/*
+
 module "rds"{
   source = "git::https://github.com/Rajesh-2406/tf-module-rds.git"
 
@@ -54,4 +54,5 @@ module "rds"{
 
   tags = var.tags
   env = var.env
-}*/
+  kms_key_arn = var.kms_key_arn
+}
