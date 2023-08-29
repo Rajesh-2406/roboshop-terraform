@@ -51,10 +51,10 @@ vpc = {
 
 default_vpc_id = "vpc-0bfb2d3938d8658ac"
 default_vpc_rt = "rtb-0dfeeb50688cc9131"
-
 allow_ssh_cidr = [ "172.31.92.189/32" ]
 zone_id = "Z0536318FEJNHSSCY1LA"
 kms_key_id = "841e1b80-4724-43b6-939b-ec575eebb2b6"
+
 rabbitmq = {
     main = {
         instance_type = "t3.small"
