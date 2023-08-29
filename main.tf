@@ -39,3 +39,17 @@ module "rabbitmq" {
   allow_ssh_cidr = var.allow_ssh_cidr
   zone_id = var.zone_id
 }
+
+module "rds"{
+  source = "git::https://github.com/Rajesh-2406/tf-module-rds.git"
+
+  for_each = var.rds
+  component = each.value[component]
+  engine = each.value["engine"]
+  engine_version =["engine_version"]
+  db_name = each.value["db_name"]
+  subnet_id = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)[0]
+
+  tags = var.tags
+  env = var.env
+}
