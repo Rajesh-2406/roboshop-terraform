@@ -47,8 +47,6 @@ module "documentdb" {
 
    for_each           = var.rds
    component          = each.value["component"]
-   engine             = each.value["engine"]
-   engine_version     = each.value["engine_version"]
    subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
    vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
    engine             = each.value["engine"]
