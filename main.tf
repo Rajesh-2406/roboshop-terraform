@@ -110,7 +110,7 @@ module "rds" {
 
 
 module "alb"  {
-  source = "git::https://github.com/Rajesh-2406/tf-module-elasticache.git"
+  source = "git::https://github.com/Rajesh-2406/tf-module-alb.git"
 
 
   for_each = var.elb
