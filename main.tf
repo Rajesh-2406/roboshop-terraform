@@ -45,19 +45,21 @@ module "vpc" {
 module "documentdb" {
   source = "git::https://github.com/Rajesh-2406/tf-module-documentdb.git"
 
-   for_each = var.rds
-   component = each.value["component"]
-   engine = each.value["engine"]
-   engine_version = ["engine_version"]
-   subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
-   vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-   instance_class = each.value["instance_class"]
-   db_instance_count = each.value["db_instance_count"]
+   for_each           = var.rds
+   component          = each.value["component"]
+   engine             = each.value["engine"]
+   engine_version     = each.value["engine_version"]
+   subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
+   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+   engine             = each.value["engine"]
+   engine_version     = each.value["engine_version"]
+   instance_class     = each.value["instance_class"]
+   db_instance_count  = each.value["db_instance_count"]
 
-  env = var.env
-  tags = var.tags
-  kms_key_arn = var.kms_key_arn
-  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
+   env                = var.env
+   tags               = var.tags
+   kms_key_arn        = var.kms_key_arn
+   sg_subnet_cidr     = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
 
 }
 
@@ -65,18 +67,18 @@ module "documentdb" {
 module "elasticache" {
   source = "git::https://github.com/Rajesh-2406/tf-module-elasticache.git"
 
-  for_each = var.elasticache
-  component = each.value["component"]
-  engine = each.value["engine"]
-  engine_version = each.value ["engine_version"]
+  for_each                = var.elasticache
+  component               = each.value["component"]
+  engine                  = each.value["engine"]
+  engine_version          = each.value ["engine_version"]
   replicas_per_node_group = each.value["replicas_per_node_group"]
-  num_node_group = each.value["num_node_groups"]
-  subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
-  node_type = each.value["node_type"]
+  num_node_group          = each.value["num_node_groups"]
+  subnet_ids              = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
+  node_type               = each.value["node_type"]
 
-  env = var.env
-  tags = var.tags
-  kms_key_arn = var.kms_key_arn
-  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
+  env                     = var.env
+  tags                    = var.tags
+  kms_key_arn             = var.kms_key_arn
+  sg_subnet_cidr          = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
 
 }
