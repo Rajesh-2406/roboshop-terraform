@@ -113,15 +113,15 @@ module "alb"  {
   source = "git::https://github.com/Rajesh-2406/tf-module-alb.git"
 
 
-  for_each = var.elb
-  name = each.value["name"]
-  internal = each.value["internal"]
+  for_each           = var.alb
+  name               = each.value["name"]
+  internal           = each.value["internal"]
   load_balancer_type = each.value["load_balancer_type"]
-  vpc_id      = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-  sg_subnet_cidr = each.value[name] == "public" ? [ "0.0.0.0/0"] : local.app_web_subnet_cidr
-  subnet_ids              = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value[subnet_ref], null), "subnet_ref", null)
+  vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  sg_subnet_cidr     = each.value[name] == "public" ? [ "0.0.0.0/0"] : local.app_web_subnet_cidr
+  subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value[subnet_ref], null), "subnet_pds", null)
 
 
-  env = var.env
+  env  = var.env
   tags = var.tags
 }
