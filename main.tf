@@ -98,7 +98,7 @@ module "elasticache" {
   node_type               = each.value["node_type"]
   subnet_ids              = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
   vpc_id                  = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-
+  parameter_group_name    = each.value["parameter+group_name"]
   env                     = var.env
   tags                    = var.tags
   kms_key_arn             = var.kms_key_arn
