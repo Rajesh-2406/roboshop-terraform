@@ -13,7 +13,7 @@ module "vpc" {
 }
 
 
-module "app_server" {
+/*module "app_server" {
   source = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
 
   env       = var.env
@@ -39,7 +39,7 @@ module "rabbitmq" {
   allow_ssh_cidr = var.allow_ssh_cidr
   zone_id        = var.zone_id
   kms_key_id     = var.kms_key_id
-}
+}*/
 
 
 module "documentdb" {
@@ -51,8 +51,9 @@ module "documentdb" {
    vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
    engine             = each.value["engine"]
    engine_version     = each.value["engine_version"]
-   instance_class     = each.value["instance_class"]
    db_instance_count  = each.value["db_instance_count"]
+   instance_class     = each.value["instance_class"]
+
 
    env                = var.env
    tags               = var.tags
