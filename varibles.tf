@@ -12,3 +12,5 @@ variable "kms_key_id" {}
 variable "elasticache" {}
 variable "documentdb" {}
 variable "alb" {}
+variable "internal" {}
+
