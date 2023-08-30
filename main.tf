@@ -13,7 +13,7 @@ module "vpc" {
 }
 
 
-/*module "app_server" {
+module "app_server" {
   source = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
 
   env       = var.env
@@ -21,9 +21,9 @@ module "vpc" {
   component = "test"
   subnet_id = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "app", null), "subnet_ids", null)[0]
   vpc_id    = lookup(lookup(module.vpc, "main",null ),"vpc_id",null)
-}*/
+}
 
-/*module "rabbitmq" {
+module "rabbitmq" {
   source = "git::https://github.com/Rajesh-2406/tf-module-rabbitmq.git"
 
   for_each       = var.rabbitmq
@@ -39,7 +39,7 @@ module "vpc" {
   allow_ssh_cidr = var.allow_ssh_cidr
   zone_id        = var.zone_id
   kms_key_id     = var.kms_key_id
-}*/
+}
 
 
 module "documentdb" {
@@ -62,7 +62,7 @@ module "documentdb" {
 }
 
 
-/*
+
 module "elasticache" {
   source = "git::https://github.com/Rajesh-2406/tf-module-elasticache.git"
 
@@ -82,4 +82,3 @@ module "elasticache" {
   sg_subnet_cidr          = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
 
 }
-*/
