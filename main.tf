@@ -45,14 +45,14 @@ module "rabbitmq" {
 module "documentdb" {
   source = "git::https://github.com/Rajesh-2406/tf-module-documentdb.git"
 
-   for_each           = var.rds
+   for_each           = var.documentdb
    component          = each.value["component"]
    engine             = each.value["engine"]
    engine_version     = each.value["engine_version"]
    db_instance_count  = each.value["db_instance_count"]
    instance_class     = each.value["instance_class"]
-  subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
-  vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+   subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
+   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
 
 
    env                = var.env
