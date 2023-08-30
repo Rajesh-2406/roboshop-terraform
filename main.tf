@@ -13,7 +13,7 @@ module "vpc" {
 }
 
 
-module "app_server" {
+/*module "app_server" {
   source = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
 
   env       = var.env
@@ -21,9 +21,9 @@ module "app_server" {
   component = "test"
   subnet_id = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "app", null), "subnet_ids", null)[0]
   vpc_id    = lookup(lookup(module.vpc, "main",null ),"vpc_id",null)
-}
+}*/
 
-module "rabbitmq" {
+/*module "rabbitmq" {
   source = "git::https://github.com/Rajesh-2406/tf-module-rabbitmq.git"
 
   for_each       = var.rabbitmq
@@ -39,25 +39,20 @@ module "rabbitmq" {
   allow_ssh_cidr = var.allow_ssh_cidr
   zone_id        = var.zone_id
   kms_key_id     = var.kms_key_id
-}
+}*/
 
 
-module "rds"{
-  source = "git::https://github.com/Rajesh-2406/tf-module-rds.git"
+module "documentdb" {
+  source = "git::https://github.com/Rajesh-2406/tf-module-documentdb.git"
 
-  for_each       = var.rds
-  component      = each.value["component"]
-  engine         = each.value["engine"]
-  engine_version =each.value["engine_version"]
-  database_name  = each.value["database_name"]
-  subnet_ids   = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
-  instance_count = each.value["instance_count"]
-  instance_class = each.value["instance_class"]
-  vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+   for_each = var.rds
+   component = each.value["component"]
+   subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
 
-  tags           = var.tags
-  env            = var.env
-  kms_key_arn    = var.kms_key_arn
+
+  env = var.env
+  tags = var.tags
+  kms_key_arn = var.kms_key_arn
   sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
 
 }
