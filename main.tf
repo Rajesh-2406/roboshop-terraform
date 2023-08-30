@@ -70,7 +70,7 @@ module "elasticache" {
   engine                  = each.value["engine"]
   engine_version          = each.value ["engine_version"]
   replicas_per_node_group = each.value["replicas_per_node_group"]
-  num_node_group          = each.value["num_node_groups"]
+  num_node_groups         = each.value["num_node_groups"]
   subnet_ids              = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
   node_type               = each.value["node_type"]
 
