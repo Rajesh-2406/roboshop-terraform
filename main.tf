@@ -62,6 +62,7 @@ module "documentdb" {
 }
 
 
+/*
 module "elasticache" {
   source = "git::https://github.com/Rajesh-2406/tf-module-elasticache.git"
 
@@ -81,3 +82,4 @@ module "elasticache" {
   sg_subnet_cidr          = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
 
 }
+*/
