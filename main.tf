@@ -97,7 +97,7 @@ module "elasticache" {
   num_node_groups         = each.value["num_node_groups"]
   node_type               = each.value["node_type"]
   subnet_ids              = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
-  vpc_id                  = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+
   sg_subnet_cidr          = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
   parameter_group_name    = each.value["parameter_group_name"]
 
@@ -105,4 +105,21 @@ module "elasticache" {
   tags                    = var.tags
   kms_key_arn             = var.kms_key_arn
 
+}
+
+module "alb"  {
+  source = "git::https://github.com/Rajesh-2406/tf-module-elasticache.git"
+
+
+  for_each = var.elb
+  name = each.value["name"]
+  internal = each.value["internal"]
+  load_balancer_type = each.value["load_balancer_type"]
+  vpc_id      = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  sg_subnet_cidr = each.value[name] == "public" ? [ "0.0.0.0/0"] : local.app_web_subnet_cidr
+  subnet_ids              = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value[subnet_ref], null), "subnet_ids", null)
+
+
+  env = var.env
+  tags = var.tags
 }

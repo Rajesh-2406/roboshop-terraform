@@ -11,3 +11,4 @@ variable "kms_key_arn" {}
 variable "kms_key_id" {}
 variable "elasticache" {}
 variable "documentdb" {}
+variable "elb" {}
