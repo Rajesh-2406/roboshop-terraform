@@ -64,11 +64,20 @@ rds  =  {
 documentdb = {
     main = {
         component = "docdb"
+        engine = "docdb"
+        engine_version = "4.0.0"
+        instance_class = 1
+        db_instance_count = "db.t3.medium"
     }
 }
 
 elasticache = {
     main = {
         component = "elasticache"
+        engine = "redis"
+        engine_version = "6.x"
+        replicas_per_node_group = 1
+        num_node_groups = 1
+        node_type = "ache.t3.micro"
     }
 }

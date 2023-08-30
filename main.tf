@@ -47,8 +47,12 @@ module "documentdb" {
 
    for_each = var.rds
    component = each.value["component"]
+   engine = each.value["engine"]
+   engine_version = ["engine_version"]
    subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
-
+   vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+   instance_class = each.value["instance_class"]
+   db_instance_count = each.value["db_instance_count"]
 
   env = var.env
   tags = var.tags
@@ -63,8 +67,12 @@ module "elasticache" {
 
   for_each = var.elasticache
   component = each.value["component"]
+  engine = each.value["engine"]
+  engine_version = each.value ["engine_version"]
+  replicas_per_node_group = each.value["replicas_per_node_group"]
+  num_node_group = each.value["num_node_groups"]
   subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
-
+  node_type = each.value["node_type"]
 
   env = var.env
   tags = var.tags
