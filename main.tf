@@ -56,3 +56,19 @@ module "documentdb" {
   sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
 
 }
+
+
+module "delsticache" {
+  source = "git::https://github.com/Rajesh-2406/tf-module-elasticache.git"
+
+  for_each = var.elasticache
+  component = each.value["component"]
+  subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
+
+
+  env = var.env
+  tags = var.tags
+  kms_key_arn = var.kms_key_arn
+  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
+
+}

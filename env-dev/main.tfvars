@@ -66,3 +66,9 @@ documentdb = {
         component = "docdb"
     }
 }
+
+elasticache = {
+    main = {
+        component = "elasticache"
+    }
+}
