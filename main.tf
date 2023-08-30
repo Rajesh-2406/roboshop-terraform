@@ -13,7 +13,7 @@ module "vpc" {
 }
 
 
-/*module "app_server" {
+module "app_server" {
   source = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
 
   env       = var.env
@@ -39,7 +39,7 @@ module "rabbitmq" {
   allow_ssh_cidr = var.allow_ssh_cidr
   zone_id        = var.zone_id
   kms_key_id     = var.kms_key_id
-}*/
+}
 
 
 module "documentdb" {
