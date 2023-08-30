@@ -67,44 +67,44 @@ module "rds" {
 module "documentdb" {
   source = "git::https://github.com/Rajesh-2406/tf-module-documentdb.git"
 
-   for_each           = var.documentdb
-   component          = each.value["component"]
-   engine             = each.value["engine"]
-   engine_version     = each.value["engine_version"]
-   db_instance_count  = each.value["db_instance_count"]
-   instance_class     = each.value["instance_class"]
-   subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
-   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+   /*for_each           = var.documentdb*/
+   /*component          = each.value["component"]*/
+   /*engine             = each.value["engine"]*/
+   /*engine_version     = each.value["engine_version"]*/
+   /*db_instance_count  = each.value["db_instance_count"]*/
+   /*instance_class     = each.value["instance_class"]*/
+   /*subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnetids", null)     */
+   /*vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)*/
+                                                                                                                        /**/
+                                                                                                                        /**/
+   /*env                = var.env*/
+   /*tags               = var.tags*/
+   /*kms_key_arn        = var.kms_key_arn*/
+   /*sg_subnet_cidr     = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", */null)
+                                                                                                                        /**/
+}                                                                                                                       /**/
+                                                                                                                        /**/
+                                                                                                                        /**/
+                                                                                                                        /**/
+mod/*ule "elasticache" {*/
+  s/*ource = "git::https://github.com/Rajesh-2406/tf-module-elasticache.git"*/
+                                                                                                                        /**/
+  f/*or_each                = var.elasticache*/
+  c/*omponent               = each.value["component"]*/
+  e/*ngine                  = each.value["engine"]*/
+  e/*ngine_version          = each.value ["engine_version"]*/
+  r/*eplicas_per_node_group = each.value["replicas_per_node_group"]*/
+  n/*um_node_groups         = each.value["num_node_groups"]*/
+  n/*ode_type               = each.value["node_type"]*/
+  s/*ubnet_ids              = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
 
+  s/*g_subnet_cidr          = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
+  p/*arameter_group_name    = each.value["parameter_group_name"]*/
 
-   env                = var.env
-   tags               = var.tags
-   kms_key_arn        = var.kms_key_arn
-   sg_subnet_cidr     = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
-
-}
-
-
-
-module "elasticache" {
-  source = "git::https://github.com/Rajesh-2406/tf-module-elasticache.git"
-
-  for_each                = var.elasticache
-  component               = each.value["component"]
-  engine                  = each.value["engine"]
-  engine_version          = each.value ["engine_version"]
-  replicas_per_node_group = each.value["replicas_per_node_group"]
-  num_node_groups         = each.value["num_node_groups"]
-  node_type               = each.value["node_type"]
-  subnet_ids              = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
-
-  sg_subnet_cidr          = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
-  parameter_group_name    = each.value["parameter_group_name"]
-
-  env                     = var.env
-  tags                    = var.tags
-  kms_key_arn             = var.kms_key_arn
-
+  e/*nv                     = var.env*/
+  t/*ags                    = var.tags*/
+  k/*ms_key_arn             = var.kms_key_arn*/
+                                                                                                                       
 }
 
 module "alb"  {
