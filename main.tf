@@ -58,7 +58,7 @@ module "documentdb" {
 }
 
 
-module "delsticache" {
+module "elsticache" {
   source = "git::https://github.com/Rajesh-2406/tf-module-elasticache.git"
 
   for_each = var.elasticache
