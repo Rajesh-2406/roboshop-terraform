@@ -13,6 +13,7 @@ module "vpc" {
 }
 
 
+/*
 module "app_server" {
   source = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
 
@@ -40,6 +41,7 @@ module "rabbitmq" {
   zone_id        = var.zone_id
   kms_key_id     = var.kms_key_id
 }
+*/
 
 
 module "documentdb" {
