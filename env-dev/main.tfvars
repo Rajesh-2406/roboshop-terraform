@@ -98,7 +98,7 @@ alb = {
     }
 }
 
-apps = {
+app = {
     cart = {
         component = "cart"
         app_port = 8080

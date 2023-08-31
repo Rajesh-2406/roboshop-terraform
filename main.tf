@@ -130,7 +130,7 @@ module "apps" {
   source = "git::https://github.com/Rajesh-2406/tf-module-app.git"
 
 
-  for_each           = var.apps
+  for_each           = var.app
   component          = each.value["component"]
   app_port           = each.value["app_port"]
   desired_capacity   = each.value["desired_capacity"]
