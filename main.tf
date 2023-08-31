@@ -125,3 +125,20 @@ module "alb"  {
   env  = var.env
   tags = var.tags
 }
+
+module "apps" {
+  source = "git::https://github.com/Rajesh-2406/tf-module-app.git"
+
+
+  for_each           = var.apps
+  component          = each.value["component"]
+  app_port           = var.app_port
+  desired_capacity   = each.value["desired_capacity"]
+  instance_type      = each.value["instance_type"]
+  max_size           = each.value["max_size"]
+  min_size           = each.value["min_size"]
+  sg_subnet_cidr     = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
+  subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
+  vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+
+}
