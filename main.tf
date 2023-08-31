@@ -142,8 +142,6 @@ module "apps" {
   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   lb_dns_name        = lookup(lookup(module.alb, each.value["lb_ref"], null), "dns_name", null)
 
-
-
   env = var.env
   tags = var.tags
   allow_ssh_cidr = var.allow_ssh_cidr
