@@ -140,7 +140,7 @@ module "apps" {
   sg_subnet_cidr          = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
   subnets            = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnet_ref"], null), "subnet_ids", null)
   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-
+  lb_dns_name        = lookup(lookup(module.alb, each.value["lb_ref"],null) "dns_name",null)
 
   env = var.env
   tags = var.tags
