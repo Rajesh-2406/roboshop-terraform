@@ -109,7 +109,7 @@ module "rds" {
 */
 
 
-/*module "alb"  {
+module "alb"  {
   source = "git::https://github.com/Rajesh-2406/tf-module-alb.git"
 
 
@@ -124,7 +124,7 @@ module "rds" {
 
   env  = var.env
   tags = var.tags
-}*/
+}
 
 module "apps" {
   source = "git::https://github.com/Rajesh-2406/tf-module-app.git"
