@@ -132,7 +132,7 @@ module "apps" {
 
   for_each           = var.apps
   component          = each.value["component"]
-  app_port           = var.app_port
+  app_port           = each.value["app_port"]
   desired_capacity   = each.value["desired_capacity"]
   instance_type      = each.value["instance_type"]
   max_size           = each.value["max_size"]
