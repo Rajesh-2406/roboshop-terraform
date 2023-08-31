@@ -144,8 +144,8 @@ module "apps" {
   listener_arn       =lookup(lookup(module.alb, each.value["lb_ref"],null), "listener_arn",null)
   lb_rule_priority   =each.value["lb_rule_priority"]
 
-  env = var.env
-  tags = var.tags
-  kms_key_id = var.kms_key_arn
-  allow_ssh_cidr = var.allow_ssh_cidr
+  env                = var.env
+  tags               = var.tags
+  kms_key_id         = var.kms_key_arn
+  allow_ssh_cidr     = var.allow_ssh_cidr
 }
