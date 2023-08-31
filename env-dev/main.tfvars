@@ -85,16 +85,16 @@ elasticache = {
 
 alb = {
     public = {
-        name = "public"
-        internal = false
+        name               = "public"
+        internal           = false
         load_balancer_type = "application"
-        subnet_ref = "public"
+        subnet_ref         = "public"
     }
     private = {
-        name = "private"
-        internal = true
+        name               = "private"
+        internal           = true
         load_balancer_type = "application"
-        subnet_ref = "app"
+        subnet_ref         = "app"
     }
 }
 
@@ -108,5 +108,6 @@ apps = {
         min_size = 1
         subnet_ref = "app"
         lb_ref = "private"
+        lb_rule_priority = 100
     }
 }
