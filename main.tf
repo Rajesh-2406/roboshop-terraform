@@ -141,4 +141,7 @@ module "apps" {
   subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnet_ref"], null), "subnet_ids", null)
   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
 
+  env = var.env
+  tags = var.tags
+  kms_arn = var.kms_key_arn
 }
