@@ -14,4 +14,3 @@ variable "documentdb" {}
 variable "alb" {}
 variable "internal" {}
 variable "apps" {}
-variable "allow_prometheus_cidr" {}
