@@ -130,7 +130,7 @@ module "apps" {
   source = "git::https://github.com/Rajesh-2406/tf-module-app.git"
 
 
-  for_each           = var.app
+  for_each           = var.apps
   component          = each.value["component"]
   app_port           = each.value["app_port"]
   desired_capacity   = each.value["desired_capacity"]
@@ -140,9 +140,14 @@ module "apps" {
   sg_subnet_cidr     = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
   subnets            = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnet_ref"], null), "subnet_ids", null)
   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  lb_dns_name        = lookup(lookup(module.alb, each.value["lb_ref"], null), "dns_name", null)
+  listener_arn       = lookup(lookup(module.alb, each.value["lb_ref"], null), "listener_arn", null)
+  lb_rule_priority   = each.value["lb_rule_priority"]
+
 
   env = var.env
   tags = var.tags
-
-
+  kms_key_id = var.kms_key_arn
+  allow_ssh_cidr = var.allow_ssh_cidr
+  allow_prometheus_cidr = var.allow_prometheus_cidr
 }
