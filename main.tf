@@ -137,7 +137,7 @@ module "apps" {
   instance_type      = each.value["instance_type"]
   max_size           = each.value["max_size"]
   min_size           = each.value["min_size"]
-  sg_subnet_cidr     = each.value["component"] == "frontend" ? local.public_web_subnet_cidr : lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), each.value["subnet_ref"], null), "cidr_block", null)
+  sg_subnet_cidr     = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
   subnets            = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnet_ref"], null), "subnet_ids", null)
   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   lb_dns_name        = lookup(lookup(module.alb, each.value["lb_ref"], null), "dns_name", null)
