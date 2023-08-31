@@ -13,4 +13,5 @@ variable "elasticache" {}
 variable "documentdb" {}
 variable "alb" {}
 variable "internal" {}
-
+variable "apps" {}
+variable "app_port" {}
