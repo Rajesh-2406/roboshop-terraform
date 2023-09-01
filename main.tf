@@ -13,7 +13,6 @@ module "vpc" {
 }
 
 
-/*
 module "app_server" {
   source = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
 
@@ -41,8 +40,7 @@ module "rabbitmq" {
   zone_id        = var.zone_id
   kms_key_id     = var.kms_key_id
 }
-*/
-/*
+
 module "rds" {
   source = "git::https://github.com/Rajesh-2406/tf-module-documentdb.git"
 
@@ -62,9 +60,9 @@ module "rds" {
   sg_subnet_cidr     = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
 
 }
-*/
 
-/*module "documentdb" *//*{
+
+module "documentdb" {
   source = "git::https://github.com/Rajesh-2406/tf-module-documentdb.git"
 
    for_each           = var.documentdb
@@ -83,10 +81,10 @@ module "rds" {
    sg_subnet_cidr     = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
 
 }
-*/
 
 
-/*module "elasticache"*/ /*{
+
+module "elasticache"{
   source = "git::https://github.com/Rajesh-2406/tf-module-elasticache.git"
 
   for_each                = var.elasticache
@@ -106,7 +104,6 @@ module "rds" {
   kms_key_arn             = var.kms_key_arn
 
 }
-*/
 
 
 module "alb"  {
