@@ -13,7 +13,6 @@ module "vpc" {
 }
 
 
-/*
 module "app_server" {
   source = "git::https://github.com/Rajesh-2406/terraform-module-application.git"
 
@@ -105,7 +104,7 @@ module "elasticache"{
   kms_key_arn             = var.kms_key_arn
 
 }
-*/
+
 
 
 module "alb"  {
