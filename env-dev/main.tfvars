@@ -52,12 +52,12 @@ rabbitmq = {
 
 rds  =  {
     main = {
-        component      = "rds"
-        engine         = "aurora-mysql"
-        engine_version = "5.7.mysql_aurora.2.11.3"
-        db_name        = "dummy"
+        component         = "rds"
+        engine            = "aurora-mysql"
+        engine_version    = "5.7.mysql_aurora.2.11.3"
+        db_name           = "dummy"
         db_instance_count = 1
-        instance_class = "db.t3.small"
+        instance_class    = "db.t3.small"
     }
 }
 
