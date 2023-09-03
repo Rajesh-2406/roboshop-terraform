@@ -165,7 +165,7 @@ apps = {
         desired_capacity = 1
         max_size         = 1
         min_size         = 1
-        subnet_ref       = "app"
+        subnet_ref       = "web"
         lb_ref           = "public"
         lb_rule_priority = 100
     }
