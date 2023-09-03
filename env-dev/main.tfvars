@@ -101,14 +101,15 @@ alb = {
 
 apps = {
     cart = {
-        component = "cart"
-        app_port = 8080
-        instance_type = "t3.micro"
+        component        = "cart"
+        app_port         = 8080
+        instance_type    = "t3.micro"
         desired_capacity = 1
-        max_size = 1
-        min_size = 1
-        subnet_ref = "app"
-        lb_ref = "private"
+        max_size         = 1
+        min_size         = 1
+        subnet_ref       = "app"
+        lb_ref           = "private"
         lb_rule_priority = 100
     }
 }
+
