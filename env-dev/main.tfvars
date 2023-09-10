@@ -122,6 +122,7 @@ apps = {
         subnet_ref       = "app"
         lb_ref           = "private"
         lb_rule_priority = 101
+        extra_param_access= ["arn:aws:ssm:us-east-1:600222537277:parameter/roboshop.${var.env}.docdb.*"]
     }
     user = {
         component        = "user"
@@ -133,6 +134,8 @@ apps = {
         subnet_ref       = "app"
         lb_ref           = "private"
         lb_rule_priority = 102
+        extra_param_access= ["arn:aws:ssm:us-east-1:600222537277:parameter/roboshop.${var.env}.docdb.*"]
+
     }
 
     shipping = {
