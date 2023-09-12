@@ -147,7 +147,6 @@ apps = {
         lb_ref           = "private"
         lb_rule_priority = 103
         extra_param_access = ["arn:aws:ssm:us-east-1:600222537277:parameter/roboshop.dev.mysql.*"]
-
     }
     payment = {
         component        = "payment"
