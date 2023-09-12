@@ -125,6 +125,9 @@ module "alb"  {
 }
 
 module "apps" {
+
+  depends_on = [module.vpc,module.app_server,module.documentdb,module.elasticache,module.rabbitmq,module.rds,module.alb]
+
   source = "git::https://github.com/Rajesh-2406/tf-module-app.git"
 
 
