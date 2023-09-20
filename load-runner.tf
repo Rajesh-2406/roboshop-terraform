@@ -18,8 +18,8 @@ provisioner "remote-exec"{
         host = self.public_ip
 }
         inline = [
-        "labauto docker",
-        "docker pull roboshop/rs-load:Latest"
+          "curl https://raw.githubusercontent.com/linuxautomations/labautomation/master/tools/docker/install.sh | bash",
+          "docker pull roboshop/rs-load:Latest"
         ]
 }
 }
