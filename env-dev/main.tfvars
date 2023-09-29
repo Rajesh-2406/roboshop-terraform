@@ -22,7 +22,7 @@ vpc = {
     }
 }
 
-default_vpc_id = "vvpc-071092d6b15659f90"
+default_vpc_id = "vpc-071092d6b15659f90"
 default_vpc_rt = "rtb-09612d47bd3dd19e9"
 allow_ssh_cidr = [ "172.31.28.204/32" ]
 zone_id        = "Z05176683IFS2PVLQ9VF0"
