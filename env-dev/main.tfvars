@@ -24,7 +24,7 @@ vpc = {
 
 default_vpc_id = "vvpc-071092d6b15659f90"
 default_vpc_rt = "rtb-09612d47bd3dd19e9"
-allow_ssh_cidr = [ "1172.31.28.204/32" ]
+allow_ssh_cidr = [ "172.31.28.204/32" ]
 zone_id        = "Z05176683IFS2PVLQ9VF0"
 kms_key_id     = "4f740efe-1e68-4e25-b2d1-d2fd4af5fa91"
 kms_key_arn    = "arn:aws:acm:us-east-1:765371225572:certificate/76353ca5-c4c8-46fb-996a-cd100502c68f"
