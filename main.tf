@@ -23,7 +23,7 @@ module "app_server" {
   vpc_id    = lookup(lookup(module.vpc, "main",null ),"vpc_id",null)
 }
 
-/*
+
 module "rabbitmq" {
   source = "git::https://github.com/Rajesh-2406/tf-module-rabbitmq.git"
 
@@ -41,7 +41,7 @@ module "rabbitmq" {
   zone_id        = var.zone_id
   kms_key_arn    = var.kms_key_arn
 }
-*/
+
 module "rds" {
   source = "git::https://github.com/Rajesh-2406/tf-module-rds.git"
 
@@ -62,7 +62,7 @@ module "rds" {
   sg_subnet_cidr     = lookup(lookup(lookup(lookup(var.vpc, "main",null),"subnets", null), "app", null), "cidr_block", null)
 
 }
-/*
+
 module "documentdb" {
   source = "git::https://github.com/Rajesh-2406/tf-module-documentdb.git"
 
@@ -153,4 +153,4 @@ module "apps" {
   kms_arn            = var.kms_key_arn
   allow_prometheus_cidr = var.allow_prometheus_cidr
 }
-*/
+
