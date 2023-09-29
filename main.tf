@@ -22,6 +22,7 @@ module "app_server" {
   subnet_id = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "app", null), "subnet_ids", null)[0]
   vpc_id    = lookup(lookup(module.vpc, "main",null ),"vpc_id",null)
 }
+/*
 
 module "rabbitmq" {
   source = "git::https://github.com/Rajesh-2406/tf-module-rabbitmq.git"
@@ -153,3 +154,4 @@ module "apps" {
   kms_arn            = var.kms_key_arn
   allow_prometheus_cidr = var.allow_prometheus_cidr
 }
+*/
