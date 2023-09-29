@@ -41,7 +41,7 @@ module "rabbitmq" {
   zone_id        = var.zone_id
   kms_key_arn    = var.kms_key_arn
 }
-
+/*
 module "rds" {
   source = "git::https://github.com/Rajesh-2406/tf-module-rds.git"
 
