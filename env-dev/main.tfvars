@@ -157,5 +157,5 @@ apps = {
         subnet_ref       = "web"
         lb_ref           = "public"
         lb_rule_priority = 100
-    }
+      }
 }
