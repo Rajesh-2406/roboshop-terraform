@@ -1,4 +1,3 @@
-/*
 data "aws_ami" "ami" {
   owners      = ["973714476881"]
   most_recent = true
@@ -8,7 +7,7 @@ data "aws_ami" "ami" {
 resource "aws_instance" "load-runner" {
   ami = data.aws_ami.ami.id
   instance_type = "t3.medium"
-  vpc_security_group_ids = ["sg-00a06bc0fff373ab1"]
+  vpc_security_group_ids = ["sg-0592914a37275dfeb"]
   tags = {
                Name = "load-runner"
           }
@@ -23,4 +22,4 @@ provisioner "remote-exec"{
           "docker pull roboshop/rs-load:Latest"
         ]
 }
-}*/
+}
