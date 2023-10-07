@@ -26,7 +26,7 @@ default_vpc_id        = "vpc-071092d6b15659f90"
 default_vpc_rt        = "rtb-09612d47bd3dd19e9"
 allow_ssh_cidr        = [ "172.31.28.204/32" ]
 zone_id               = "Z05176683IFS2PVLQ9VF0"
-kms_key_id            = "391d5412-55a3-4072-89de-fca5ccc4c9f3""
+kms_key_id            = "391d5412-55a3-4072-89de-fca5ccc4c9f3"
 kms_key_arn           = "arn:aws:kms:us-east-1:765371225572:key/391d5412-55a3-4072-89de-fca5ccc4c9f3"
 allow_prometheus_cidr =  ["172.31.17.11/32"]
 
